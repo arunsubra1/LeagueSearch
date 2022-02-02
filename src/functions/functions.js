@@ -149,7 +149,7 @@ function fancyTimeFormat(duration)
     return ret;
 }
 
-
+/*populates top 3 champions from summoner profile*/
 function populateMastery(playerMastery) {
 return(
     <>
@@ -165,6 +165,7 @@ return(
   )
 }
 
+/*displayes match history*/
 function populateMatch(playerData, match) {
   if (findWin(playerData, match) === "Victory") {
     return (

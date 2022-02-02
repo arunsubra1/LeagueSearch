@@ -1,7 +1,7 @@
 /* Set background gradient as well as some other elements*/
 .App {
   text-align: center;
-  background: linear-gradient(-45deg, #010108, #7232f2, #f6b3e5);
+  background: linear-gradient(-45deg, #0505b4, #6b2ce7, #f6b3e5);
 	animation: gradient 15s ease infinite;
   background-size: 200% 200%;
   top: 0;
@@ -10,12 +10,17 @@
   right: 0;
   position: absolute;
   font-weight: 200;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   width: 100%;
   overflow-x: hidden;
 }
 
 
+.noData {
+  align-self: center;
+  color: #010108;
+  font-size: larger;
+}
 
 
 ul {
@@ -53,9 +58,13 @@ li a:hover {
   font-size: larger;
   font-weight: 200;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: max-content;
+}
+
+.top {
+  padding: 10px;
 }
 
 input {
@@ -93,6 +102,7 @@ input {
   margin: 10px;
   padding: 10px;
   border-style: solid;
+  border-width: 4px;
   border-color: black;
   background-color: #c876ff;
   text-emphasis: 10px;
@@ -137,7 +147,7 @@ input {
   font-size: 20px;
   display: flex;
   width: 35vw;
-  font-weight: 300;
+  font-weight: bold;
   flex-wrap: wrap;
 }
 
@@ -151,7 +161,7 @@ input {
   justify-content: space-evenly;
   width: fit-content;
   animation: fadeIn ease 5s;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .game {
@@ -159,10 +169,12 @@ input {
   margin: 5px;
   padding: 10px;
   flex-direction: row;
+  flex-wrap: nowrap;
   gap: 10px 20px;
   width: auto;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-style: solid;
+  border-width: 4px;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
 }
 
@@ -179,26 +191,34 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-shrink: 2;
 }
 
 .kda {
   display: flex;
-  text-align: center;
-  font-weight: bold;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
 
 .DMG {
   display: flex;
+  flex-shrink: 1;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 5px;
-  align-items: center;
+
+}
+
+.page {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .prev, .next {
   padding: 5px;
+  width: 20%;
 }
 
 .prev:hover, .next:hover, .button:hover {
@@ -206,12 +226,18 @@ input {
   background-color: black;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1120px) {
   .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: auto;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .DMG {
+    display: none;
   }
 }
 

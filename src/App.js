@@ -2,6 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { populateMatch, populateMastery } from './functions/functions';
+import Swal from 'sweetalert2';
 
 
 
@@ -12,9 +13,8 @@ function App() {
   const [playerMatchId, setPlayerMatchId] = useState([]);
   const [match, setMatch] = useState({});
   const [index, setIndex] = useState(0);
-  const [error, setError] = useState([])
   let promises = [];
-  const API_KEY = "RGAPI-b281e1d9-f79d-4644-9447-8f0e655c7eb4";
+  const API_KEY = "";
   
   const clearState = () => {
     setPlayerData({})
@@ -29,10 +29,14 @@ function App() {
     // handle the API call
     axios.get(APICallString).then(function (response) {
       setPlayerData(response.data)
-      setError(response.status)
     }).catch((e) => {
       if (e.response.status === 404) {
-        alert("Invalid Username")
+        Swal.fire({
+          title: 'Error!',
+          text: 'Invalid Username',
+          icon: 'error',
+          confirmButtonText: 'ok'
+        })
         return null;
       }else {
         console.log(e.response);
@@ -40,8 +44,6 @@ function App() {
     })
       
   };
-
-  console.log(error, playerData)
 
   function searchPlayerMastery() {
     let APIMasteryCall = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"+ playerData.id + "?api_key=" + API_KEY;
@@ -85,7 +87,12 @@ function App() {
   
   function prevIndex(e) {
     if (index === 0) {
-      console.log("index is at 0")
+      Swal.fire({
+        title: 'Error!',
+        text: 'You are on the first page',
+        icon: 'error',
+        confirmButtonText: 'ok'
+      })
       return null
     }
     else {
@@ -95,7 +102,12 @@ function App() {
 
   function nextIndex(e) {
     if (index === 15) {
-      console.log("max amount of games")
+      Swal.fire({
+        title: 'Error!',
+        text: 'you have reached the limit of games',
+        icon: 'error',
+        confirmButtonText: 'ok'
+      })
       return null
     }
     else {
@@ -113,7 +125,12 @@ function App() {
   
   function search(e) {
     if (removeSpaces(searchText) === "") {
-      alert("Type In A Name")
+      Swal.fire({
+        title: 'Error!',
+        text: 'you need to type in a name',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
       return null
     } else {
       clearState();
@@ -143,7 +160,6 @@ function App() {
       <div className="App">
         <div>
           <ul>
-            <li><a href="a">Champions</a></li>
             <li><a href="https://developer.riotgames.com/">Dev Portal</a></li>
             <li><a href="https://www.leagueoflegends.com/en-us/">LOL</a></li>
           </ul>
@@ -157,12 +173,14 @@ function App() {
             </div>  
             {JSON.stringify(playerData) !== '{}' ?
               <>
-                <div>Summoner Name: {playerData.name}</div>
-                <img width="50px" height="50px" src={"http://ddragon.leagueoflegends.com/cdn/12.1.1/img/profileicon/" + playerData.profileIconId + ".png"} alt="summoner icon"></img>
-                <div>Summoner Level: {playerData.summonerLevel}</div>
+                <div className="summoner">
+                  <div>Summoner Name: {playerData.name}</div>
+                  <img width="50px" height="50px" src={"http://ddragon.leagueoflegends.com/cdn/12.1.1/img/profileicon/" + playerData.profileIconId + ".png"} alt="summoner icon"></img>
+                  <div>Summoner Level: {playerData.summonerLevel}</div>
+                </div>
               </>
               :
-              <><div>we dont have player data</div></>
+              <><div className="noData">we dont have player data</div></>
             }
           </div>
         </div> 
@@ -189,12 +207,12 @@ function App() {
               <div className="matches">
                 {JSON.stringify(match) !== '{}' ?
                   <>
-                      {populateMatch(playerData, match[0])}
-                      {populateMatch(playerData, match[1])}
-                      {populateMatch(playerData, match[2])}
-                      {populateMatch(playerData, match[3])}
-                      {populateMatch(playerData, match[4])}
-                    <div>
+                    {populateMatch(playerData, match[0])}
+                    {populateMatch(playerData, match[1])}
+                    {populateMatch(playerData, match[2])}
+                    {populateMatch(playerData, match[3])}
+                    {populateMatch(playerData, match[4])}
+                    <div className="page">
                       <button className="prev" onClick={e => prevIndex(e)}>prev</button>
                       <button className="next" onClick={e => nextIndex(e)}>next</button>
                     </div> 
