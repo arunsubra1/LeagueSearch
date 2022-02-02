@@ -1,0 +1,234 @@
+/* Set background gradient as well as some other elements*/
+.App {
+  text-align: center;
+  background: linear-gradient(-45deg, #010108, #7232f2, #f6b3e5);
+	animation: gradient 15s ease infinite;
+  background-size: 200% 200%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  font-weight: 200;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  opacity: 50%;
+  color: white;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+
+/* first text that pops up as well as input and search button */
+.header {
+  display: flex;
+  margin: 8px;
+  padding: 8px;
+  font-size: larger;
+  font-weight: 200;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+}
+
+input {
+  text-align: center;
+  border-radius: 5%;
+}
+
+
+/* content contains the top 3 champs as well as match history */
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+
+/* Player mastery layer */
+.champions {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+}
+
+.champ {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: fit-content;
+  margin: 10px;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+  background-color: #c876ff;
+  text-emphasis: 10px;
+  text-shadow: black;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.champ.One:hover {
+  transition: all 1s linear;
+  background-color: red;
+  color: white;
+  box-shadow: 24px 24px 4px 2px rgba(0, 0, 255, .2);
+}
+.champ.champ.Two:hover {
+  transition: all 1s linear;
+  background-color: #f0a07c;
+  color: #4a274f;
+  box-shadow: 24px 24px 4px 2px rgba(0, 0, 255, .2);
+}
+.champ.Three:hover {
+  transition: all 1s linear;
+  background-color: yellow;
+  color: black;
+  box-shadow: 24px 24px 4px 2px rgba(0, 0, 255, .2);
+}
+
+
+.champ.Two {
+  flex-direction: row-reverse;
+}
+
+.sumImage {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  animation: fadeIn ease 5s;
+  box-shadow: 0px 2px 2px 2px black
+}
+
+
+.description {
+  font-size: 20px;
+  display: flex;
+  width: 35vw;
+  font-weight: 300;
+  flex-wrap: wrap;
+}
+
+
+/* match history layer*/
+.matches {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: fit-content;
+  animation: fadeIn ease 5s;
+  font-weight: 200;
+}
+
+.game {
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+  flex-direction: row;
+  gap: 10px 20px;
+  width: auto;
+  justify-content: space-evenly;
+  border-style: solid;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.game.won {
+  background-color: lightgreen;
+}
+
+.game.lost {
+  background-color: #D1495B;
+}
+
+.winTime {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.kda {
+  display: flex;
+  text-align: center;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.DMG {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
+
+.prev, .next {
+  padding: 5px;
+}
+
+.prev:hover, .next:hover, .button:hover {
+  color: white;
+  background-color: black;
+}
+
+@media only screen and (max-width: 960px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+  }
+}
+
+/* keyframes for animations*/
+@keyframes fadeIn {
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
