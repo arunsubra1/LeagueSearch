@@ -154,12 +154,14 @@ function populateMastery(playerMastery) {
 return(
     <>
       <div className="description">"{findDescription(playerMastery)}."</div>
-        <div className="text">
+        <div className="cInfo">
           <div>
             <img className="sumImage" src={findChampImage(playerMastery)} alt={findName(playerMastery)}></img>
           </div>
-          {findName(playerMastery)}<br />
-          Mastery points:{playerMastery.championPoints}
+          <div>
+            {findName(playerMastery)}<br />
+            Mastery: {playerMastery.championPoints}
+          </div>
         </div>
     </>
   )
@@ -171,7 +173,7 @@ function populateMatch(playerData, match) {
     return (
       <div className="game won">
         <div className="winTime">
-          <div>{findWin(playerData, match)}</div><br />
+          <div className="v">{findWin(playerData, match)}</div><br />
           <div>{fancyTimeFormat(findTimePlayed(playerData, match))}</div>
         </div>
         <div>
@@ -179,11 +181,11 @@ function populateMatch(playerData, match) {
           <div>{findChampionName(playerData, match)}<br />{findLane(playerData, match)}</div>
         </div>
         <div className="kda">
-          K / D / A<br></br>
-          {findKills(playerData, match)} / {findDeaths(playerData, match)} / {findAssists(playerData, match)}
+          <div className="kdaText">K / D / A</div>
+          <div className="kdaInfo">{findKills(playerData, match)} / {findDeaths(playerData, match)} / {findAssists(playerData, match)}</div>
         </div>
         <div className="DMG">
-          <div>Damage To Champs: {findTotalDamageDealt(playerData, match)}</div>
+          <div>Dmg To Champs: {findTotalDamageDealt(playerData, match)}</div>
           <div>CS: {findTotalMinionsKilled(playerData, match)}</div>
           <div>Gold: {goldEarned(playerData, match)}</div>
         </div>
@@ -195,16 +197,16 @@ function populateMatch(playerData, match) {
             <div>{findWin(playerData, match)}</div><br />
             <div>{fancyTimeFormat(findTimePlayed(playerData, match))}</div>
           </div>
-          <div>
+          <div className="matchImg">
             <div><img height="50px" width="50px" src={findMatchImage(playerData, match)} alt={findChampionName(playerData, match)}></img></div>
             <div>{findChampionName(playerData, match)}<br />{findLane(playerData, match)}</div>
           </div>
           <div className="kda">
-            K / D / A<br></br>
-            {findKills(playerData, match)} / {findDeaths(playerData, match)} / {findAssists(playerData, match)}
+            <div className="kdaText">K / D / A</div>
+            <div className="kdaInfo">{findKills(playerData, match)} / {findDeaths(playerData, match)} / {findAssists(playerData, match)}</div>
           </div>
           <div className="DMG">
-            <div>Damage To Champs: {findTotalDamageDealt(playerData, match)}</div>
+            <div>Dmg To Champs:<br />{findTotalDamageDealt(playerData, match)}</div>
             <div>CS: {findTotalMinionsKilled(playerData, match)}</div>
             <div>Gold: {goldEarned(playerData, match)}</div>
           </div>

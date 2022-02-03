@@ -1,7 +1,7 @@
 /* Set background gradient as well as some other elements*/
 .App {
   text-align: center;
-  background: linear-gradient(-45deg, #0505b4, #6b2ce7, #f6b3e5);
+  background: linear-gradient(-45deg, #6b2ce7, #ffad42);
 	animation: gradient 15s ease infinite;
   background-size: 200% 200%;
   top: 0;
@@ -9,8 +9,9 @@
   bottom: 0;
   right: 0;
   position: absolute;
-  font-weight: 200;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  font-family: Friz Quadrata, 'Times New Roman', Times, serif;
+  font-size: 16px;
   width: 100%;
   overflow-x: hidden;
 }
@@ -53,25 +54,75 @@ li a:hover {
 /* first text that pops up as well as input and search button */
 .header {
   display: flex;
-  margin: 8px;
-  padding: 8px;
-  font-size: larger;
-  font-weight: 200;
-  flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  height: max-content;
+  justify-content: center;
+}
+
+h1 {
+  color: #000000;
+  height: min-content;
+  -webkit-text-stroke: 1px gold;
+  font-size: 50px;
 }
 
 .top {
   padding: 10px;
+  display: flex;
+  padding: 0px;
+  font-size: larger;
+  font-weight: 200;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  align-items: center;
+}
+
+.button {
+  padding: 5px;
+  margin: 5px;
+  border: #010108;
+  border-style: solid;
+  border-width: 4px;
+  width: 50%;
+}
+
+.searchUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summoner {
+  border-style: solid;
+  width: fit-content;
+  border-width: 4px;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.summoner:hover {
+  transition: all 1s linear;
+  box-shadow: 24px 24px 4px 2px rgba(0, 0, 255, .2);
 }
 
 input {
+  padding: 5px;
+  position: relative;
   text-align: center;
-  border-radius: 5%;
+  outline: none;
+  font-size: 20px;
+  font-weight: bolder;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
 }
 
+.input::-webkit-input-placeholder {
+  color: rgb(0, 0, 0);
+  opacity: 30%;
+}
 
 /* content contains the top 3 champs as well as match history */
 .content {
@@ -87,7 +138,7 @@ input {
 .champions {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: max-content;
   margin: 5px;
   padding: 5px;
   color: white;
@@ -98,15 +149,13 @@ input {
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
-  width: fit-content;
-  margin: 10px;
+  width: max-content;
+  margin: 5px;
   padding: 10px;
   border-style: solid;
   border-width: 4px;
   border-color: black;
   background-color: #c876ff;
-  text-emphasis: 10px;
-  text-shadow: black;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
 }
 
@@ -135,13 +184,12 @@ input {
 }
 
 .sumImage {
-  height: 125px;
-  width: 125px;
+  height: 140px;
+  width: 140px;
   border-radius: 50%;
   animation: fadeIn ease 5s;
   box-shadow: 0px 2px 2px 2px black
 }
-
 
 .description {
   font-size: 20px;
@@ -161,7 +209,6 @@ input {
   justify-content: space-evenly;
   width: fit-content;
   animation: fadeIn ease 5s;
-  font-weight: 400;
 }
 
 .game {
@@ -172,17 +219,23 @@ input {
   flex-wrap: nowrap;
   gap: 10px 20px;
   width: auto;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-style: solid;
   border-width: 4px;
+  animation: fadeIn ease 5s;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
 }
 
-.game.won {
+.game:hover {
+  transition: all 1s linear;
+  box-shadow: 24px 24px 4px 2px rgba(0, 0, 255, .2);
+}
+
+.won {
   background-color: lightgreen;
 }
 
-.game.lost {
+.lost {
   background-color: #D1495B;
 }
 
@@ -191,24 +244,27 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-shrink: 2;
+  width: max-content;
+}
+
+.matchImg {
+  width: 15%;
 }
 
 .kda {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
   justify-content: center;
+  flex-wrap: nowrap;
   align-items: center;
+  width: 25%;
 }
 
 .DMG {
   display: flex;
-  flex-shrink: 1;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
-
+  width: 45%;
 }
 
 .page {
@@ -218,12 +274,23 @@ input {
 
 .prev, .next {
   padding: 5px;
-  width: 20%;
+  width: 25%;
+  border: #010108;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.button, .prev, .next {
+  font-weight: bold;
+  font-family: Friz Quadrata, 'Times New Roman', Times, serif;
+  font-size: 14px;
 }
 
 .prev:hover, .next:hover, .button:hover {
-  color: white;
-  background-color: black;
+  color: #ffffff !important;
+	background: #000000;
+	border-color: #f6b93b !important;
+	transition: all 0.4s ease 0s;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -235,9 +302,16 @@ input {
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 800px) {
   .DMG {
     display: none;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .game {
+    padding: 1px;
+    width: 300px;
   }
 }
 
@@ -249,12 +323,12 @@ input {
 
 @keyframes gradient {
 	0% {
-		background-position: 0% 50%;
+		background-position: 0% 100%;
 	}
 	50% {
-		background-position: 100% 50%;
+		background-position: 100% 100%;
 	}
 	100% {
-		background-position: 0% 50%;
+		background-position: 0% 100%;
 	}
 }

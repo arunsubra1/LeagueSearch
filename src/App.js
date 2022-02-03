@@ -14,7 +14,7 @@ function App() {
   const [match, setMatch] = useState({});
   const [index, setIndex] = useState(0);
   let promises = [];
-  const API_KEY = "";
+  const API_KEY = "RGAPI-cd288e5b-07cf-4c91-a2c0-8a6eb93217b2";
   
   const clearState = () => {
     setPlayerData({})
@@ -35,10 +35,17 @@ function App() {
           title: 'Error!',
           text: 'Invalid Username',
           icon: 'error',
-          confirmButtonText: 'ok'
+          confirmButtonText: 'Ok'
         })
         return null;
-      }else {
+      }else if (e.response.status === 403) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Forbidden Request (Check if API is Valid)',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      } else {
         console.log(e.response);
       }
     })
@@ -133,8 +140,8 @@ function App() {
       })
       return null
     } else {
-      clearState();
-      searchForSummoner(e);
+        clearState();
+        searchForSummoner(e);
     }
   }
   
@@ -168,8 +175,8 @@ function App() {
           <div className="top">
             <h1>Summoners of League</h1>
             <div className="searchUser">
-              <input type="text" onChange={e => setSearchText(e.target.value)}></input>
-              <button className="button" onClick={e => search(e)}>Search Summoner</button>
+              <input type="text" className="input" placeholder="Enter Name!" onChange={e => setSearchText(e.target.value)}></input>
+              <button className="button" onClick={e => search(e)}>Search</button>
             </div>  
             {JSON.stringify(playerData) !== '{}' ?
               <>
@@ -213,8 +220,8 @@ function App() {
                     {populateMatch(playerData, match[3])}
                     {populateMatch(playerData, match[4])}
                     <div className="page">
-                      <button className="prev" onClick={e => prevIndex(e)}>prev</button>
-                      <button className="next" onClick={e => nextIndex(e)}>next</button>
+                      <button className="prev" onClick={e => prevIndex(e)}>PREV</button>
+                      <button className="next" onClick={e => nextIndex(e)}>NEXT</button>
                     </div> 
                   </>
                   :
