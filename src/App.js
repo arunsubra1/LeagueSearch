@@ -5,7 +5,6 @@ import { populateMatch, populateMastery } from './functions/functions';
 import Swal from 'sweetalert2';
 
 
-
 function App() {
   const [searchText, setSearchText] = useState("");
   const [playerData, setPlayerData] = useState({});
@@ -14,8 +13,9 @@ function App() {
   const [match, setMatch] = useState({});
   const [index, setIndex] = useState(0);
   let promises = [];
-  const API_KEY = "RGAPI-cd288e5b-07cf-4c91-a2c0-8a6eb93217b2";
+  const API_KEY = process.env.REACT_APP_API_KEY
   
+
   const clearState = () => {
     setPlayerData({})
     setPlayerMastery({})
